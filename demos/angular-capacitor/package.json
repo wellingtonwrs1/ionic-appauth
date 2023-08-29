@@ -29,7 +29,7 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic/angular": "6.2.4",
     "capacitor-secure-storage-plugin": "0.8.1",
-    "ionic-appauth": "github:wi3land/ionic-appauth",
+    "ionic-appauth": "github:wellingtonwrs1/ionic-appauth",
     "rxjs": "7.5.7",
     "tslib": "2.4.0",
     "zone.js": "0.11.8"

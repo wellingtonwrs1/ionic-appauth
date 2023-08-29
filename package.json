@@ -14,9 +14,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wi3land/ionic-appauth.git"
+    "url": "git@github.com:wellingtonwrs1/ionic-appauth.git"
   },
-  "homepage": "https://github.com/wi3land/ionic-appauth#readme",
+  "homepage": "https://github.com/wellingtonwrs1/ionic-appauth#readme",
   "keywords": [
     "OAuth",
     "OIDC",
@@ -32,10 +32,10 @@
     "Vue"
   ],
   "author": {
-    "name": "wi3land"
+    "name": "wellingtonwrs1"
   },
   "bugs": {
-    "url": "https://github.com/wi3land/ionic-appauth/issues"
+    "url": "https://github.com/wellingtonwrs1/ionic-appauth/issues"
   },
   "license": "MIT",
   "devDependencies": {

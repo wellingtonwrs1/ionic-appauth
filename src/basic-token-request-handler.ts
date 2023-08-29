@@ -4,8 +4,14 @@ import {
   BasicQueryStringUtils,
   JQueryRequestor,
   QueryStringUtils,
-  Requestor, RevokeTokenRequest, TokenError, TokenErrorJson, TokenRequest,
-  TokenRequestHandler, TokenResponse, TokenResponseJson
+  Requestor,
+  RevokeTokenRequest,
+  TokenError,
+  TokenErrorJson,
+  TokenRequest,
+  TokenRequestHandler,
+  TokenResponse,
+  TokenResponseJson,
 } from '@openid/appauth';
 
 /**
@@ -13,47 +19,44 @@ import {
  */
 export class BasicTokenRequestHandler implements TokenRequestHandler {
   constructor(
-      public readonly requestor: Requestor = new JQueryRequestor(),
-      public readonly utils: QueryStringUtils = new BasicQueryStringUtils()) {}
+    public readonly requestor: Requestor = new JQueryRequestor(),
+    public readonly utils: QueryStringUtils = new BasicQueryStringUtils(),
+  ) {}
 
-  private isTokenResponse(response: TokenResponseJson|
-                          TokenErrorJson): response is TokenResponseJson {
+  private isTokenResponse(response: TokenResponseJson | TokenErrorJson): response is TokenResponseJson {
     return (response as TokenErrorJson).error === undefined;
   }
 
-  performRevokeTokenRequest(
-      configuration: AuthorizationServiceConfiguration,
-      request: RevokeTokenRequest): Promise<boolean> {
+  performRevokeTokenRequest(configuration: AuthorizationServiceConfiguration, request: RevokeTokenRequest): Promise<boolean> {
     let revokeTokenResponse = this.requestor.xhr<boolean>({
       url: configuration.revocationEndpoint,
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      data: this.utils.stringify(request.toStringMap())
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      data: this.utils.stringify(request.toStringMap()),
     });
 
-    return revokeTokenResponse.then(response => {
+    return revokeTokenResponse.then((response) => {
       return true;
     });
   }
 
   performTokenRequest(configuration: AuthorizationServiceConfiguration, request: TokenRequest): Promise<TokenResponse> {
-    let tokenResponse = this.requestor.xhr<TokenResponseJson|TokenErrorJson>({
+    let tokenResponse = this.requestor.xhr<TokenResponseJson | TokenErrorJson>({
       url: configuration.tokenEndpoint,
       method: 'POST',
-      dataType: 'json',  // adding implicit dataType
+      dataType: 'json', // adding implicit dataType
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Basic ${btoa(`${request.clientId}:${request.extras.client_secret}`)}`
+        Authorization: `Basic ${btoa(`${request.clientId}:${request.extras.client_secret}`)}`,
       },
-      data: this.utils.stringify(request.toStringMap())
+      data: this.utils.stringify(request.toStringMap()),
     });
 
-    return tokenResponse.then(response => {
+    return tokenResponse.then((response) => {
       if (this.isTokenResponse(response)) {
         return new TokenResponse(response);
       } else {
-        return Promise.reject<TokenResponse>(
-            new AppAuthError(response.error, new TokenError(response)));
+        return Promise.reject<TokenResponse>(new AppAuthError(response.error, new TokenError(response)));
       }
     });
   }

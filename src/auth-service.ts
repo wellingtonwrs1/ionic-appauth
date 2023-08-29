@@ -68,10 +68,10 @@ export class AuthService implements IAuthService {
   protected endSessionHandler: EndSessionHandler;
 
   constructor(
-      protected browser: Browser = new DefaultBrowser(),
-      protected storage: StorageBackend = new LocalStorageBackend(),
-      protected requestor: Requestor = new JQueryRequestor(),
-      protected basicAuthHeader: boolean = false,
+    protected browser: Browser = new DefaultBrowser(),
+    protected storage: StorageBackend = new LocalStorageBackend(),
+    protected requestor: Requestor = new JQueryRequestor(),
+    protected basicAuthHeader: boolean = false,
   ) {
     this.tokenHandler = basicAuthHeader ? new BasicTokenRequestHandler(requestor) : new BaseTokenRequestHandler(requestor);
     this.userInfoHandler = new IonicUserInfoHandler(requestor);
@@ -198,7 +198,7 @@ export class AuthService implements IAuthService {
   protected onAuthorizationNotification(
     request: AuthorizationRequest,
     response: AuthorizationResponse | null,
-    error: AuthorizationError | null
+    error: AuthorizationError | null,
   ) {
     let codeVerifier: string | undefined =
       request.internal != undefined && this.authConfig.pkce ? request.internal.code_verifier : undefined;

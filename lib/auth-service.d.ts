@@ -33,6 +33,7 @@ export declare class AuthService implements IAuthService {
   protected browser: Browser;
   protected storage: StorageBackend;
   protected requestor: Requestor;
+  protected basicAuthHeader: boolean;
   private _configuration?;
   private _authConfig?;
   private _authSubject;
@@ -47,7 +48,7 @@ export declare class AuthService implements IAuthService {
   protected userInfoHandler: UserInfoHandler;
   protected requestHandler: AuthorizationRequestHandler;
   protected endSessionHandler: EndSessionHandler;
-  constructor(browser?: Browser, storage?: StorageBackend, requestor?: Requestor);
+  constructor(browser?: Browser, storage?: StorageBackend, requestor?: Requestor, basicAuthHeader?: boolean);
   /**
    * @deprecated independant observers have been replaced by Rxjs
    * this will be removed in a future release
@@ -74,7 +75,7 @@ export declare class AuthService implements IAuthService {
   protected onAuthorizationNotification(
     request: AuthorizationRequest,
     response: AuthorizationResponse | null,
-    error: AuthorizationError | null
+    error: AuthorizationError | null,
   ): void;
   protected internalAuthorizationCallback(url: string): Promise<void>;
   protected internalEndSessionCallback(): Promise<void>;

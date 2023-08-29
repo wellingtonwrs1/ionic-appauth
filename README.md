@@ -1,6 +1,6 @@
 # Ionic AppAuth
 
-[![Build](https://github.com/wi3land/ionic-appauth/actions/workflows/main.yml/badge.svg)](https://github.com/wi3land/ionic-appauth/actions/workflows/main.yml) 
+[![Build](https://github.com/wellingtonwrs1/ionic-appauth/actions/workflows/main.yml/badge.svg)](https://github.com/wellingtonwrs1/ionic-appauth/actions/workflows/main.yml) 
 
 Ionic AppAuth is a implementation of the [AppAuth-JS](https://github.com/openid/AppAuth-JS) for Ionic Users.
 It includes code extensions for core cordova plugins to run the Ionic app such as [Advanced HTTP](https://github.com/silkimen/cordova-plugin-advanced-http) and [SafariViewController](https://github.com/EddyVerbruggen/cordova-plugin-safariviewcontroller).
@@ -19,10 +19,10 @@ npm install ionic-appauth
 ## Examples
 
 Demos have been moved into the main repository to centralise issues.
-- Angular/Cordova: https://github.com/wi3land/ionic-appauth/tree/master/demos/angular-cordova<br />
-- Angular/Capacitor: https://github.com/wi3land/ionic-appauth/tree/master/demos/angular-capacitor<br />
-- React: https://github.com/wi3land/ionic-appauth/tree/master/demos/react<br />
-- Vue: https://github.com/wi3land/ionic-appauth/tree/master/demos/vue<br />
+- Angular/Cordova: https://github.com/wellingtonwrs1/ionic-appauth/tree/master/demos/angular-cordova<br />
+- Angular/Capacitor: https://github.com/wellingtonwrs1/ionic-appauth/tree/master/demos/angular-capacitor<br />
+- React: https://github.com/wellingtonwrs1/ionic-appauth/tree/master/demos/react<br />
+- Vue: https://github.com/wellingtonwrs1/ionic-appauth/tree/master/demos/vue<br />
 - Vanilla: (To Be Completed)
 - Ionic V3: (To Be Completed)
 
