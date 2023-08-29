@@ -29,6 +29,7 @@ import { EndSessionRequestJson, EndSessionRequest } from './end-session-request'
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ActionHistoryObserver, AuthObserver, BaseAuthObserver, SessionObserver } from './auth-observer';
 import { AuthSubject } from './auth-subject';
+import { BasicTokenRequestHandler } from './basic-token-request-handler';
 
 const TOKEN_RESPONSE_KEY = 'token_response';
 const AUTH_EXPIRY_BUFFER = 10 * 60 * -1; // 10 mins in seconds
@@ -67,11 +68,12 @@ export class AuthService implements IAuthService {
   protected endSessionHandler: EndSessionHandler;
 
   constructor(
-    protected browser: Browser = new DefaultBrowser(),
-    protected storage: StorageBackend = new LocalStorageBackend(),
-    protected requestor: Requestor = new JQueryRequestor()
+      protected browser: Browser = new DefaultBrowser(),
+      protected storage: StorageBackend = new LocalStorageBackend(),
+      protected requestor: Requestor = new JQueryRequestor(),
+      protected basicAuthHeader: boolean = false,
   ) {
-    this.tokenHandler = new BaseTokenRequestHandler(requestor);
+    this.tokenHandler = basicAuthHeader ? new BasicTokenRequestHandler(requestor) : new BaseTokenRequestHandler(requestor);
     this.userInfoHandler = new IonicUserInfoHandler(requestor);
     this.requestHandler = new IonicAuthorizationRequestHandler(browser, storage);
     this.endSessionHandler = new IonicEndSessionHandler(browser);
